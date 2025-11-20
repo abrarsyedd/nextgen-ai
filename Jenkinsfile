@@ -6,6 +6,7 @@ pipeline {
         GITHUB_CREDENTIALS = credentials('github-creds')
         APP_NAME = 'nextgen-ai'
         IMAGE_REPO = "syed048/${APP_NAME}"
+        BACKEND_ENV_SECRET = credentials('nextgen-backend-env')
     }
     
     stages{
@@ -47,6 +48,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
+                    sh 'cp $BACKEND_ENV_SECRET backend/.env'
                     sh "docker compose down --remove-orphans"
                     sh "docker compose -p nextgen-ai pull"
                     sh "docker compose -p nextgen-ai up -d"
@@ -57,6 +59,7 @@ pipeline {
 
     post {
         always {
+            sh 'rm -f backend/.env'
             echo 'Pipeline Finished'
         }
     }
