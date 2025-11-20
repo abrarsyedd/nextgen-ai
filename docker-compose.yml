@@ -1,0 +1,37 @@
+services:
+  frontend:
+    image: syed048/nextgen-ai:frontend-latest
+    container_name: nextgen-ai-frontend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+  backend:
+    image: syed048/nextgen-ai:backend-latest
+    container_name: nextgen-ai-backend
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    env_file:
+      - ./backend/.env
+    depends_on:
+      - db
+
+  db:
+    image: syed048/nextgen-ai:db-latest
+    container_name: nextgen-ai-db
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: nextgen_ai
+    
+    volumes:
+      - db_data:/var/lib/mysql
+      
+
+volumes:
+  db_data:

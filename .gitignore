@@ -1,0 +1,21 @@
+Ignore Environment Variables
+
+.env
+backend/.env
+frontend/.env
+
+Ignore Node Modules (Too heavy to upload)
+
+node_modules/
+backend/node_modules/
+frontend/node_modules/
+
+Ignore Docker builds/logs
+
+.log
+npm-debug.log
+
+OS generated files
+
+.DS_Store
+Thumbs.db
