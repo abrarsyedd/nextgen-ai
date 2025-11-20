@@ -640,15 +640,32 @@ const About = () => (
         <h3 className="text-3xl font-bold text-white mb-10 text-center">Our Leadership</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
-            { name: "Dr. Sarah Chen", role: "CEO & Co-Founder", bio: "Former Lead AI Researcher at DeepMind." },
-            { name: "James Sterling", role: "CTO", bio: "Pioneer of the transformer-XL architecture." },
-            { name: "Elena Rodriguez", role: "Head of Ethics", bio: "PhD in Philosophy and Computational Logic." }
+            { 
+              name: "Abrar Syed", 
+              role: "CEO & Founder", 
+              bio: "Former Lead AI Researcher at DeepMind.",
+              image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&h=400"
+            },
+            { 
+              name: "James Sterling", 
+              role: "CTO", 
+              bio: "Pioneer of the transformer-XL architecture.",
+              image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&h=400"
+            },
+            { 
+              name: "Elena Rodriguez", 
+              role: "Head of Ethics", 
+              bio: "PhD in Philosophy and Computational Logic.",
+              image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&h=400"
+            }
           ].map((leader, idx) => (
             <div key={idx} className="bg-gray-900/50 p-6 rounded-2xl border border-gray-800 hover:border-teal-500/50 transition-colors text-center group">
               <div className="w-24 h-24 bg-gray-800 rounded-full mx-auto mb-6 overflow-hidden border-2 border-transparent group-hover:border-teal-500 transition-all">
-                <div className="w-full h-full bg-gradient-to-b from-gray-700 to-gray-900 flex items-center justify-center">
-                  <Users className="text-gray-500" />
-                </div>
+                <img 
+                  src={leader.image} 
+                  alt={leader.name} 
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                />
               </div>
               <h4 className="text-xl font-bold text-white">{leader.name}</h4>
               <p className="text-teal-400 text-sm mb-3">{leader.role}</p>
